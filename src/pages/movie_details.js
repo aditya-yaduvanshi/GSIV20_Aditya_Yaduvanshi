@@ -1,3 +1,4 @@
+import "../styles/pages/movie_details.css";
 
 const MovieDetails = () => {
   return (

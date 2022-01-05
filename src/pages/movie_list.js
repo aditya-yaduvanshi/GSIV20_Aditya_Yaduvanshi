@@ -1,3 +1,4 @@
+import "../styles/pages/movie_list.css";
 
 const MovieList = () => {
   return (
