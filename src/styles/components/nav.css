@@ -1,14 +1,18 @@
-.header {
-  width: 100%;
-}
 .nav {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   background: var(--color-gray);
+  border-bottom: 2px solid var(--color-light-gray);
   padding: 10px 20px;
   height: 20%;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  margin-bottom: 5px;
+  z-index: 1000;
 }
 .nav_link {
   height: 100%;
@@ -27,8 +31,11 @@
   padding: 5px 10px;
   font-weight: bold;
 }
-.nav_link:hover {
+.nav_link:hover, .brand_link:hover {
   color: white;
+}
+.brand_link:hover {
+  text-shadow: 0 0 2px var(--color-red);
 }
 .nav_search {
   margin: auto 20%;
@@ -37,7 +44,7 @@
   height: 30px;
   width: 100%;
 }
-@media all and (min-width: 512px) {
+@media all and (min-width: 720px) {
   .nav {
     flex-direction: row;
     justify-content: flex-start;

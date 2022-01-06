@@ -1,14 +1,15 @@
-import Header from "./Header";
-import Footer from "./Footer";
+import Nav from "./Nav";
 import {BrowserRouter as Router} from "react-router-dom";
+import { Provider } from "../contexts/movies";
 
 const Layout = ({children}) => {
   return (
-    <Router>
-      <Header/>
-      {children}
-      <Footer/>
-    </Router>
+    <Provider>
+      <Router>
+        <Nav/>
+        {children}
+      </Router>
+    </Provider>
   )
 }
 

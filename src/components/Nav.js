@@ -1,17 +1,26 @@
 import {useState} from "react";
-import {NavLink} from "react-router-dom";
-import "../styles/components/header.css";
+import {NavLink, useHistory} from "react-router-dom";
+import "../styles/components/nav.css";
 
-const Header = () => {
+const Nav = () => {
   const [query, setQuery] = useState("");
 
   const changeQuery = (event) => {
     setQuery(event.target.value);
   };
 
+  const hist = useHistory();
+  const [root,setRoot] = useState(true);
+
+  const goBack = (event) => {
+    event.preventDefault();
+    setRoot(true);
+    hist.goBack();
+  }
+
   return (
-    <header className="header">
       <nav className="nav">
+        { !root && <button type="button" onClick={goBack}>Back</button> }
         <div className="nav_brand">
           <NavLink to="/" className="brand_link">
             Findz Movies
@@ -40,8 +49,7 @@ const Header = () => {
           </form>
         </div>
       </nav>
-    </header>
   );
 };
 
-export default Header;
+export default Nav;

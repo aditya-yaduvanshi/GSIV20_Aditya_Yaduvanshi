@@ -1,0 +1,35 @@
+.movie_list {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: space-evenly;
+  column-gap: min(10px, 5%);
+  row-gap: 25px;
+  width: 100%;
+  overflow-x: hidden;
+  padding: 10px;
+}
+@media (min-width: 480px){
+  .movie_list {
+    grid-template-columns: auto auto;
+  }
+}
+@media (min-width: 720px){
+  .movie_list {
+    grid-template-columns: auto auto auto;
+  }
+}
+@media (min-width: 992px){
+  .movie_list {
+    grid-template-columns: auto auto auto auto;
+  }
+}
+@media (min-width: 1200px){
+  .movie_list {
+    grid-template-columns: auto auto auto auto auto;
+  }
+}
+@media (min-width: 1500px){
+  .movie_list {
+    grid-template-columns: auto auto auto auto auto auto;
+  }
+}

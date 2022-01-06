@@ -14,7 +14,7 @@ const App = () => {
       <Suspense fallback={"loading..."}>
         <Switch>
           <Route path="/" exact component={MovieList} />
-          <Route path="/:movieId" component={MovieDetails} />
+          <Route path="/:title/:id" component={MovieDetails} />
         </Switch>
       </Suspense>
     </main>
