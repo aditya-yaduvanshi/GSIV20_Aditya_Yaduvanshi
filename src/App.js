@@ -1,4 +1,4 @@
-import {Suspense, lazy} from "react";
+import React, {Suspense, lazy} from "react";
 import {Route, Switch} from "react-router-dom";
 import MovieList from "./pages/movie_list";
 
@@ -14,7 +14,7 @@ const App = () => {
       <Suspense fallback={"loading..."}>
         <Switch>
           <Route path="/" exact component={MovieList} />
-          <Route path="/:title/:id" component={MovieDetails} />
+          <Route path="/:movie" component={MovieDetails} />
         </Switch>
       </Suspense>
     </main>

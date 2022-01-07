@@ -10,22 +10,9 @@
   transition: all 0.2s;
 }
 .fetch_movie {
-  animation: fetch 1s both infinite ease;
+  animation: fetch_img 1s both infinite ease;
 }
-@keyframes fetch {
-  0% {
-    opacity: 1;
-    background-image: linear-gradient(to right, var(--color-light-gray), var(--color-disabled) 99%);
-  }
-  50% {
-    opacity: 0.2;
-    background-image: linear-gradient(to right, var(--color-light-gray), var(--color-disabled) 50%, var(--color-light-gray));
-  }
-  100% {
-    opacity: 1;
-    background-image: linear-gradient(to right, var(--color-light-gray), var(--color-disabled) 99%);
-  }
-}
+
 @keyframes fetch_img {
   0% {
     background-image: linear-gradient(to right, var(--color-light-gray), var(--color-disabled) 99%);
@@ -82,9 +69,8 @@
   color: var(--color-amber);
 }
 .movie_text {
-  width: 100%;
+  width: calc(100%);
   padding: 10px;
-  white-space: pre-wrap;
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--color-light-gray);

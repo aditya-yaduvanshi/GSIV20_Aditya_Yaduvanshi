@@ -1,5 +1,5 @@
-import {useState} from "react";
-import {NavLink, useHistory} from "react-router-dom";
+import React, {useState} from "react";
+import {NavLink} from "react-router-dom";
 import "../styles/components/nav.css";
 
 const Nav = () => {
@@ -9,21 +9,11 @@ const Nav = () => {
     setQuery(event.target.value);
   };
 
-  const hist = useHistory();
-  const [root,setRoot] = useState(true);
-
-  const goBack = (event) => {
-    event.preventDefault();
-    setRoot(true);
-    hist.goBack();
-  }
-
   return (
       <nav className="nav">
-        { !root && <button type="button" onClick={goBack}>Back</button> }
         <div className="nav_brand">
           <NavLink to="/" className="brand_link">
-            Findz Movies
+            Movies Browser
           </NavLink>
         </div>
         <div className="nav_search">

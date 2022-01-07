@@ -11,22 +11,21 @@
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Findz Movies</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Movies Browser</title>
     <style>
-      #root {
-        height: 100%;
-        width: 100%;
+      #_root_progress {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
-      #before_progress {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-      }
-      #before_progress h2 {
+      #_root_progress h2 {
         text-align: center;
       }
-      #progress_slider {
+      #_root_progress_slider {
         width: 200px;
         height: 50px;
       }
@@ -35,9 +34,9 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
-      <div id="before_progress">
-        <h2>Findz Movie</h2>
-        <progress id="progress_slider"></progress>
+      <div id="_root_progress">
+        <h2>Movies Browser</h2>
+        <progress id="_root_progress_slider"></progress>
       </div>
     </div>
   </body>

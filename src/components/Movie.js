@@ -1,17 +1,20 @@
 import "../styles/components/movie.css";
 import {Link} from "react-router-dom";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 
 const Movie = forwardRef(({movie}, ref) => {
   return (
     <Link
       className="movie"
-      to={`/${movie.title
-        .trim()
-        .split(" ")
-        .join("-")
-        .replace(":", "")
-        .toLowerCase()}/${movie.id}`}
+      to={{ 
+        pathname: `/${movie.title
+          .trim()
+          .split(" ")
+          .join("-")
+          .replace(":", "")
+          .toLowerCase()}-${movie.id}`,
+        state: { id: movie.id, poster_path: movie.poster_path }
+      }}
       ref={ref}
     >
       <img

@@ -1,13 +1,19 @@
 import "../styles/pages/movie_list.css";
 import Movie, {FetchMovie} from "../components/Movie";
-import useMovies from "../hooks/useMovies";
-import { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { connect } from "react-redux";
+import { discoverMovies } from "../redux/actions/movies";
 
-const MovieList = () => { 
+const MovieList = ({movies, loading, error, hasMore, discoverMovies, pages}) => { 
 
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(pages.length > 0 ? pages[pages.length - 1] : 1);
   const observer = useRef();
-  const [movies, loading, error, hasMore] = useMovies(page);
+
+  useEffect(() => {
+    console.log("called")
+    if(!pages.find(p => p === page))
+      discoverMovies(page);
+  }, [page]);
 
   const lastMovieElementRef = useCallback(node => {
     if(loading) return
@@ -42,6 +48,7 @@ const MovieList = () => {
             />
           );
       })}
+      {error && <div>Error loading movies</div>}
       {loading && (
         <>
           <FetchMovie/>
@@ -56,4 +63,12 @@ const MovieList = () => {
   );
 };
 
-export default MovieList;
+const mapStateToProps = (state) => ({
+  movies: state.movies.movies,
+  hasMore: state.movies.hasMore,
+  loading: state.movies.loading,
+  error: state.movies.error,
+  pages: state.movies.pages
+})
+
+export default connect(mapStateToProps, {discoverMovies})(MovieList);
