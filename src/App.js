@@ -1,9 +1,15 @@
 import React, {Suspense, lazy} from "react";
 import {Route, Switch} from "react-router-dom";
-import MovieList from "./pages/movie_list";
+import Loader from "./components/Loader";
 
 const MovieDetails = lazy(() =>
-  import("./pages/movie_details")
+  import("./pages/movieDetails")
+    .then((page) => page)
+    .catch((err) => console.log(err))
+);
+
+const MovieList = lazy(() =>
+  import("./pages/movieList")
     .then((page) => page)
     .catch((err) => console.log(err))
 );
@@ -11,7 +17,7 @@ const MovieDetails = lazy(() =>
 const App = () => {
   return (
     <main className="App">
-      <Suspense fallback={"loading..."}>
+      <Suspense fallback={<Loader/>}>
         <Switch>
           <Route path="/" exact component={MovieList} />
           <Route path="/:movie" component={MovieDetails} />

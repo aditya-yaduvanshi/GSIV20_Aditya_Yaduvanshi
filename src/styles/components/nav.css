@@ -2,12 +2,11 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   background: var(--color-gray);
   border-bottom: 2px solid var(--color-light-gray);
-  padding: 10px 20px;
-  height: 20%;
+  padding: 5px 20px;
   position: sticky;
   position: -webkit-sticky;
   top: 0;
@@ -30,6 +29,9 @@
   text-decoration: none;
   padding: 5px 10px;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .nav_link:hover, .brand_link:hover {
   color: white;
@@ -38,33 +40,42 @@
   text-shadow: 0 0 2px var(--color-red);
 }
 .nav_search {
-  margin: auto 20%;
+  margin: 1vw;
   position: relative;
   padding: 0;
   height: 30px;
   width: 100%;
-}
-@media all and (min-width: 720px) {
-  .nav {
-    flex-direction: row;
-    justify-content: flex-start;
-  }
+  max-width: 512px;
 }
 .nav_search_form {
   height: 100%;
   width: 100%;
 }
 .nav_search:hover .search_input {
-  box-shadow: 0 0 2px 2px var(--color-light-gray);
+  box-shadow: 0 0 3px 1px white;
 }
 .search_input {
   height: 100%;
   width: 100%;
   border-radius: 5px;
+  background-color: var(--color-disabled);
   border: none;
   outline: none;
-  padding-left: 8px;
+  padding: 0 30px;
   font-size: 1rem;
+  border: 1px solid transparent;
+  transition: all 0.6ms;
+  color: var(--color-gray);
+  font-weight: 600;
+}
+.search_input:focus {
+  border-color: var(--color-gray);
+}
+.search_icon {
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  color: var(--color-gray);
 }
 .search_reset {
   position: absolute;
@@ -84,7 +95,7 @@
   cursor: pointer;
 }
 .search_reset:hover {
-  background: var(--color-light-gray);
+  background: var(--color-gray);
   color: white;
 }
 .search_reset:active {
@@ -93,4 +104,25 @@
 }
 .search_none {
   display: none;
+}
+.search_results {
+  position: absolute;
+  top: 35px;
+  border: 2px solid transparent;
+  height: 50vh;
+  border-radius: 10px;
+  width: 100%;
+  background: var(--color-gray);
+  overflow-y: scroll;
+  padding: 10px;
+}
+.search_results a {
+  margin: 10px 0;
+}
+
+@media all and (min-width: 720px) {
+  .nav {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
 }

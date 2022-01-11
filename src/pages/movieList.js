@@ -1,8 +1,8 @@
-import "../styles/pages/movie_list.css";
+import "../styles/pages/movieList.css";
 import Movie, {FetchMovie} from "../components/Movie";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
-import { discoverMovies } from "../redux/actions/movies";
+import { discoverMovies } from "../redux/actions/movieList";
 
 const MovieList = ({movies, loading, error, hasMore, discoverMovies, pages}) => { 
 
@@ -10,10 +10,9 @@ const MovieList = ({movies, loading, error, hasMore, discoverMovies, pages}) => 
   const observer = useRef();
 
   useEffect(() => {
-    console.log("called")
-    if(!pages.find(p => p === page))
-      discoverMovies(page);
-  }, [page]);
+    discoverMovies(page);
+    return;
+  }, [page, discoverMovies]);
 
   const lastMovieElementRef = useCallback(node => {
     if(loading) return
