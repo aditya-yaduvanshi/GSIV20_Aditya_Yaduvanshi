@@ -9,8 +9,8 @@
 }
 .header_img {
   width: 100%;
-  z-index: -1;
   overflow: hidden;
+  background-image: linear-gradient(transparent, black 95%);
 }
 .header_content {
   height: 100%;

@@ -119,6 +119,23 @@
 .search_results a {
   margin: 10px 0;
 }
+.search_more {
+  width: 100%;
+  padding: 10px;
+  background: none;
+  border: 2px solid var(--color-disabled);
+  color: var(--color-disabled);
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s;
+}
+.search_more:hover {
+  text-shadow: 0 0 5px black;
+  box-shadow: 0 0 3px 1px var(--color-light-gray);
+  background-color: #FFF1;
+}
 
 @media all and (min-width: 720px) {
   .nav {

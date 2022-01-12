@@ -1,4 +1,4 @@
-import { types } from "../actions/movieDetails";
+import types from "../types/movieDetails";
 
 const initialState = {
   movies: [],

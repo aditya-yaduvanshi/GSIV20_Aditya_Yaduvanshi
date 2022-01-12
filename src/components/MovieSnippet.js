@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "../styles/components/Movie.css";
 import React from "react";
+import noImage from "../assets/no-image.png";
 
 const MovieSnippet = ({movie, onBlur}) => {
   return (
@@ -20,7 +21,10 @@ const MovieSnippet = ({movie, onBlur}) => {
       <img
         className="movie_img"
         src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-        style={{backgroundImage: `url("https://image.tmdb.org/t/p/w700${movie.backdrop_path}")`}}
+        onError={({ currentTarget }) => {
+          currentTarget.onerror = null;
+          currentTarget.src = noImage;
+        }}
         alt={movie.title}
       />
       <div className="movie_body">

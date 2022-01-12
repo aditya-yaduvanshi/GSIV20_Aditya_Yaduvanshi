@@ -1,11 +1,6 @@
 import axios from "axios";
 import store from "../store";
-
-const types = {
-  SET_MOVIE_DETAIL: "SET_MOVIE_DETAIL",
-  LOADING_MOVIE_DETAIL: "LOADING_MOVIE_DETAIL",
-  ERROR_LOADING_MOVIE_DETAIL: "ERROR_LOADING_MOVIE_DETAIL",
-};
+import types from "../types/movieDetails";
 
 const getMovieDetails = (id) => async (dispatch) => {
   const cached = store.getState().movieDetails.movies.find(m => m.id === id);
@@ -33,4 +28,4 @@ const getMovieDetails = (id) => async (dispatch) => {
   return () => cancel();
 };
 
-export {getMovieDetails, types};
+export {getMovieDetails};

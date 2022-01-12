@@ -4,6 +4,7 @@ import MovieHeader from "../components/MovieHeader";
 import {getMovieDetails} from "../redux/actions/movieDetails";
 import {connect} from "react-redux";
 import Loader from "../components/Loader";
+import noImage from "../assets/no_image.png";
 
 const MovieDetails = ({
   location: {
@@ -33,11 +34,17 @@ const MovieDetails = ({
             tagline={movie.tagline}
           />
           <div className="movie_details_content movie_row">
-            <img
-              className="movie_content_img"
-              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-              alt="poster"
-            />
+            {movie.poster_path && 
+              <img
+                className="movie_content_img"
+                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                alt="poster"
+                onError={({ currentTarget }) => {
+                  currentTarget.onerror = null;
+                  currentTarget.src = noImage;
+                }}
+              />
+            }
             <div className="movie_content_body">
               {movie.adult && <span className="movie_imp">18+ Only</span>}
               <h2 className="movie_content_title">

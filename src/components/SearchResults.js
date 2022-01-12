@@ -25,9 +25,15 @@ const SearchResults = ({
 
   useEffect(() => {
     if (query) searchMovies(query, page);
-    else clearSearchResults();
+
+    return () => {
+      if(!query)
+        clearSearchResults();
+      return;
+    };
   }, [page, query, searchMovies, clearSearchResults]);
 
+  if (!query) return null;
   return (
     <div className="search_results">
       {results?.map((res, index) => (
@@ -55,7 +61,6 @@ const mapStateToProps = (state) => ({
   pages: state.searchMovies.pages,
 });
 
-export default connect(
-  mapStateToProps, 
-  {searchMovies, clearSearchResults}
-)(SearchResults);
+export default connect(mapStateToProps, {searchMovies, clearSearchResults})(
+  SearchResults
+);

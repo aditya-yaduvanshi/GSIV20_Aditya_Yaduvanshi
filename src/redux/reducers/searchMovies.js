@@ -1,4 +1,4 @@
-import { types } from "../actions/searchMovies";
+import types from "../types/searchMovies";
 
 const initialState = {
   seaching: false,
@@ -8,18 +8,18 @@ const initialState = {
 };
 
 const searchMoviesReducer = (state = initialState, {type, payload}) => {
-  switch(type){
+  switch (type) {
     case types.SEARCHING_MOVIE:
       return {
         ...state,
         searching: true,
-      }
+      };
     case types.ERROR_SEARCHING_MOVIES:
       return {
         ...state,
         searching: false,
         error: true,
-      }
+      };
     case types.SET_SEARCH_RESULTS:
       return {
         ...state,
@@ -27,16 +27,16 @@ const searchMoviesReducer = (state = initialState, {type, payload}) => {
         searching: false,
         results: [...new Set([...state.results, ...payload.results])],
         pages: [...new Set([...state.pages, payload.page])],
-      }
+      };
     case types.CLEAR_SEARCH_RESULTS:
       return {
         ...state,
         pages: [],
         results: [],
-      }
+      };
     default:
       return state;
   }
-}
+};
 
 export default searchMoviesReducer;
