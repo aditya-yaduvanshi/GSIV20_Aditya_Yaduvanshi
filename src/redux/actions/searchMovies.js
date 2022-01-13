@@ -3,8 +3,8 @@ import store from "../store";
 import types from "../types/searchMovies";
 
 const searchMovies = (query, page) => async (dispatch) => {
-  const cached = store.getState().searchMovies.pages.find((p) => p === page);
-  if (cached) return dispatch({type: "CACHED"});
+  if (store.getState().searchMovies.query !== query) 
+    dispatch({type: types.CLEAR_SEARCH_RESULTS});
 
   dispatch({type: types.SEARCHING_MOVIE});
   let cancel;
@@ -17,7 +17,7 @@ const searchMovies = (query, page) => async (dispatch) => {
     .then((res) => {
       dispatch({
         type: types.SET_SEARCH_RESULTS,
-        payload: {results: res.data.results, page},
+        payload: {results: res.data.results, query},
       });
     })
     .catch((err) => {

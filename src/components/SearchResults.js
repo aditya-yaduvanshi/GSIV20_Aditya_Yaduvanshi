@@ -10,13 +10,10 @@ const SearchResults = ({
   results,
   searchMovies,
   error,
-  pages,
   clearSearchResults,
   searching,
 }) => {
-  const [page, setPage] = useState(
-    pages.length > 0 ? pages[pages.length - 1] : 1
-  );
+  const [page, setPage] = useState(1);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -24,16 +21,17 @@ const SearchResults = ({
   };
 
   useEffect(() => {
-    if (query) searchMovies(query, page);
+    const delayDebaunce = setTimeout(() => {
+      if (query.trim()) searchMovies(query.trim(), page);
+    }, 300);
 
     return () => {
-      if(!query)
-        clearSearchResults();
-      return;
+      if (!query) clearSearchResults();
+      return clearInterval(delayDebaunce);
     };
   }, [page, query, searchMovies, clearSearchResults]);
 
-  if (!query) return null;
+  if (!query.trim()) return null;
   return (
     <div className="search_results">
       {results?.map((res, index) => (
@@ -45,10 +43,14 @@ const SearchResults = ({
         </div>
       )}
       {searching && <Loader />}
-      {results && (
+      {results.length ? (
         <button className="search_more" type="button" onClick={handleClick}>
           Load More Results
         </button>
+      ) : (
+        <div style={{color: "white", textAlign: "center"}}>
+          No Search Results Found!
+        </div>
       )}
     </div>
   );
@@ -58,7 +60,6 @@ const mapStateToProps = (state) => ({
   results: state.searchMovies.results,
   searching: state.searchMovies.searching,
   error: state.searchMovies.error,
-  pages: state.searchMovies.pages,
 });
 
 export default connect(mapStateToProps, {searchMovies, clearSearchResults})(

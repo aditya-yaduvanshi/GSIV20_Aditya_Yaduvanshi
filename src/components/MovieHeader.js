@@ -1,6 +1,6 @@
 import "../styles/components/MovieHeader.css";
 import React, { useEffect, useState } from "react";
-import noImage from "../assets/no_image.png";
+import noImage from "../assets/no-image.png";
 
 const MovieHeader = ({cover_src, title, tagline}) => {
   const [width, setWidth] = useState(() => {

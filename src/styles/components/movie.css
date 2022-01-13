@@ -14,11 +14,15 @@
 }
 .movie_snippet {
   flex-direction: row;
-  height: max-content;
+  height: 135px;
   width: 100%;
   max-width: none;
   font-size: 75%;
   border: 1px solid var(--color-light-gray);
+}
+.movie:active, 
+.movie_snippet:active {
+  opacity: 0.5;
 }
 .movie_snippet .movie_img {
   height: 100%;

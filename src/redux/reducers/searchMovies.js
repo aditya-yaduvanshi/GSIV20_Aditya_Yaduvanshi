@@ -1,10 +1,10 @@
 import types from "../types/searchMovies";
 
 const initialState = {
-  seaching: false,
+  searching: false,
   error: false,
   results: [],
-  pages: [],
+  query: null
 };
 
 const searchMoviesReducer = (state = initialState, {type, payload}) => {
@@ -26,13 +26,15 @@ const searchMoviesReducer = (state = initialState, {type, payload}) => {
         error: false,
         searching: false,
         results: [...new Set([...state.results, ...payload.results])],
-        pages: [...new Set([...state.pages, payload.page])],
+        query: payload.query
       };
     case types.CLEAR_SEARCH_RESULTS:
       return {
         ...state,
-        pages: [],
+        searching: false,
+        error: false,
         results: [],
+        query: null
       };
     default:
       return state;
