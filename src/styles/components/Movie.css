@@ -1,0 +1,118 @@
+.movie, .fetch_movie, .movie_snippet {
+  background: var(--color-light-gray);
+  width: 100%;
+  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.2s;
+}
+.fetch_movie {
+  animation: fetch_img 1s both infinite ease;
+}
+.movie_snippet {
+  flex-direction: row;
+  height: 135px;
+  width: 100%;
+  max-width: none;
+  font-size: 75%;
+  border: 1px solid var(--color-light-gray);
+}
+.movie:active, 
+.movie_snippet:active {
+  opacity: 0.5;
+}
+.movie_snippet .movie_img {
+  height: 100%;
+  width: 50%;
+  border-radius: 0;
+}
+.movie_snippet .movie_body {
+  position: static;
+  opacity: 1;
+  background-color: var(--color-gray);
+  background-image: linear-gradient(transparent , black 40%);
+  padding: 5px;
+  width: 50%;
+  height: auto;
+}
+.movie_title {
+  margin: auto;
+}
+
+@keyframes fetch_img {
+  0% {
+    background-image: linear-gradient(to right, var(--color-light-gray), var(--color-disabled) 99%);
+  }
+  50% {
+    background-image: linear-gradient(to right, var(--color-light-gray), var(--color-disabled) 50%, var(--color-light-gray));
+  }
+  100% {
+    background-image: linear-gradient(to right, var(--color-light-gray), var(--color-disabled) 99%);
+  }
+}
+.movie:hover, .movie_snippet:hover {
+  box-shadow: 0 0 10px black;
+}
+.movie:hover .movie_body {
+  background-color: transparent;
+  opacity: 0.9;
+  background-image: linear-gradient(transparent, black 50%);
+}
+.movie_img {
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  animation: fetch_img 1s both infinite ease;
+}
+.movie_body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s;
+}
+.movie_title {
+  text-align: center;
+  color: white;
+  text-shadow: 0 0 5px black;
+}
+.movie_meta {
+  width: 90%;
+}
+.movie_meta_text {
+  color: var(--color-disabled);
+  margin: 2px 0;
+  position: relative;
+}
+.movie_meta_text strong {
+  position: absolute;
+  right: 0;
+  color: var(--color-amber);
+}
+.movie_text {
+  width: calc(100%);
+  padding: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--color-light-gray);
+}
+.movie_imp {
+  position: absolute;
+  background: var(--color-red);
+  font-size: 0.6rem;
+  border-radius: 5px;
+  padding: 5px;
+  top: 5px;
+  left: 5px;
+  color: white;
+  font-weight: bold;
+}
